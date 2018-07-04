@@ -1,0 +1,12 @@
+{
+  "name": "seo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "producers.js",
+  "scripts": {
+    "build": "browserify ./build/index.js -t babelify --outfile ./target/index.js",
+    "minify": "minify --output ./target/index.min.js ./target/index.js"
+  },
+  "author": "Yukitaka Maeda",
+  "license": "ISC"
+}
