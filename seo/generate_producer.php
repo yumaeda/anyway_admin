@@ -1132,7 +1132,7 @@ else
     if ($result !== FALSE)
     {
         $cRow = mysqli_num_rows($result);
-        while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) || ($i <= ($cRow + 5)))
+        while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) || ($i <= ($cRow + 15)))
         {
             $barcode    = $row['barcode_number'];
             $wineDetail = $row['detail'];
