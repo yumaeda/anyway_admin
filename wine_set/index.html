@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+        <title>ワインセット</title>
+        <script type="text/javascript">
+
+        document.createElement('header');
+
+        </script>
+        <link rel="stylesheet" type="text/css" href="index.min.css" />
+    </head>
+    <body>
+        <header>
+            <a href="http://sei-ya.jp/admin_home.html">管理者トップに戻る</a>
+            <h1>ワインセット</h1>
+            <br />
+            以下のリストから、セール用のワインを管理する事ができます。
+        </header>
+        <div id="left-pane"></div>
+        <div id="right-pane">
+            <table>
+                <tr>
+                    <td colspan="2"><input type="text" name="set_name" style="width:100%;" /></td>
+                </tr>
+                <tr>
+                    <td>Total Price</td>
+                    <td><span id="total-price-text"></span>&nbsp;yen</td>
+                </tr>
+                <tr>
+                    <td>Comment</td>
+                    <td><textarea name="comment"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Set Price</td>
+                    <td><input type="text" name="set_price" /></td>
+                </tr>
+                <tr class="separator-tr">
+                    <td colspan="2"><hr /></td>
+                </tr>
+                <tr>
+                    <td>Wine 1</td>
+                    <td><input type="text" class="barcode-input" name="barcode1" /></td>
+                </tr>
+                <tr>
+                    <td>Wine 2</td>
+                    <td><input type="text" class="barcode-input" name="barcode2" /></td>
+                </tr>
+                <tr>
+                    <td>Wine 3</td>
+                    <td><input type="text" class="barcode-input" name="barcode3" /></td>
+                </tr>
+                <tr>
+                    <td>Wine 4</td>
+                    <td><input type="text" class="barcode-input" name="barcode4" /></td>
+                </tr>
+                <tr>
+                    <td>Wine 5</td>
+                    <td><input type="text" class="barcode-input" name="barcode5" /></td>
+                </tr>
+                <tr>
+                    <td>Wine 6</td>
+                    <td><input type="text" class="barcode-input" name="barcode6" /></td>
+                </tr>
+                <tr>
+                    <td>Wine 7</td>
+                    <td><input type="text" class="barcode-input" name="barcode7" /></td>
+                </tr>
+                <tr>
+                    <td>Wine 8</td>
+                    <td><input type="text" class="barcode-input" name="barcode8" /></td>
+                </tr>
+                <tr>
+                    <td>Wine 9</td>
+                    <td><input type="text" class="barcode-input" name="barcode9" /></td>
+                </tr>
+                <tr>
+                    <td>Wine 10</td>
+                    <td><input type="text" class="barcode-input" name="barcode10" /></td>
+                </tr>
+                <tr>
+                    <td>Wine11</td>
+                    <td><input type="text" class="barcode-input" name="barcode11" /></td>
+                </tr>
+                <tr>
+                    <td>Wine 12</td>
+                    <td><input type="text" class="barcode-input" name="barcode12" /></td>
+                </tr>
+                <tr class="separator-tr">
+                    <td colspan="2"><hr /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#" id="createLink">Create</a>
+                        <a href="#" id="updateLink">Update</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="#" id="resetLink">Reset</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript" src="./index.min.js"></script>
+

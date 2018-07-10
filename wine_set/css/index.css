@@ -1,0 +1,46 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+div#left-pane
+{
+    width: 450px;
+    float: left;
+
+    border: 1px solid rgb(244, 244, 244);
+    padding: 20px;
+}
+
+div#right-pane
+{
+    float: left;
+    padding: 20px;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+tr.wine-set-row > td
+{
+    padding: 15px;
+}
+
+tr.separator-tr > td
+{
+    padding: 20px 0 20px 0;
+}
+
+.selected-set
+{
+    background-color: lavender;
+}
+
+a#updateLink
+{
+    display: none;
+}
+
