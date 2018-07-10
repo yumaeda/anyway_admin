@@ -1,0 +1,60 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    font-family: "Kozuka Gothic Pro EL", "Kozuka Gothic Pro L", "Meiryo UI", sans-serif;
+}
+
+header
+{
+    padding-bottom: 20px;
+}
+
+select#siteSelect
+{
+    margin: 15px;
+}
+
+option
+{
+    padding: 5px;
+}
+
+.adminLink
+{
+    color: rgb(80, 80, 80);
+}
+
+.adminLink:hover
+{
+    color: brown;
+}
+
+div.adminBtn
+{
+    display: inline-block;
+    margin: 15px;
+
+    border: 1px solid;
+    border-color: rgb(224, 224, 224);
+
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+div.adminBtn > div
+{
+    font-size: 10px;
+    width: 125px;
+    height: 125px;
+
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+

@@ -1,0 +1,13 @@
+{
+  "name": "home",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify ./build/index.js -t babelify --outfile ./target/index.js",
+    "minify": "minify --output ./target/admin_home.min.js ./target/index.js",
+    "css-minify": "minify --output ./target/admin_home.min.css ./build/index.css"
+  },
+  "author": "Yukitaka Maeda",
+  "license": "ISC"
+}
