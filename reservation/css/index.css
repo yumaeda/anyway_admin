@@ -1,0 +1,27 @@
+body
+{
+    font-family: Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+td
+{
+    font-size: 12px;
+    padding: 5px;
+}
+
+input.codeFld
+{
+    width: 50px;
+}
+
+input.quantityFld
+{
+    width: 40px;
+}
+
+input.revertBtn
+{
+    display: none;
+}
+
