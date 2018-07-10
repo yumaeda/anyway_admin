@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+        <title>Mitsu-Getsu: 出庫済みワイン</title>
+        <script type="text/javascript">
+
+        document.createElement('header');
+
+        </script>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style type="text/css">
+
+        input.codeFld
+        {
+            width: 50px;
+        }
+
+        input.quantityFld
+        {
+            width: 40px;
+        }
+
+        div#errorPane
+        {
+            color: red;
+        }
+
+        tr
+        {
+            height: 80px;
+        }
+
+        @media print
+        {
+            .noprint
+            {
+                display:none;
+            }
+        }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Mitsu-Getsu: 出庫済みワイン</h1>
+            </header>
+            <hr />
+            <a href="#" class="button--action-print">印刷する</a>
+            <hr />
+            <div id="contentsPane">
+                <table class="table table-striped">
+                </table>
+            </div>
+            <hr />
+            <a href="#" class="button--action-reset">リセットする</a>
+            <hr />
+            <div id="logPane"></div>
+            <div id="errorPane"></div>
+        </div>
+    </body>
+</html>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="./index.min.js?ver=0003"></script>
+
