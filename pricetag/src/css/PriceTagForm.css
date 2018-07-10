@@ -1,0 +1,60 @@
+.mousseux, .mousseux-rouge, .mousseux-rose
+{
+    background-color: rgb(216, 144, 0);
+}
+
+.blanc, .orange, .gris
+{
+    background-color: rgb(67, 103, 155);
+}
+
+.sherry, .jaune, .madeira
+{
+    background-color: rgb(0, 67, 26);
+}
+
+.rouge
+{
+    background-color: rgb(105, 18, 27);
+}
+
+.port, .doux
+{
+    background-color: rgb(96, 77, 63);
+}
+
+.rose
+{
+    background-color: rgb(189, 79, 94);
+}
+
+.eau-de-vie
+{
+    background-color: rgb(78, 46, 69);
+}
+
+.champagne
+{
+    background-color: rgb(234, 84, 21);
+}
+
+.champagne-rose
+{
+    background-color: rgb(227, 24, 113);
+}
+
+.liqueur
+{
+    background-color: rgb(139, 144, 41);
+}
+
+.goods
+{
+    background-color: rgb(30, 47, 75);
+}
+
+.food, .beer, .cider
+{
+    background-color: rgb(121, 106, 85);
+}
+

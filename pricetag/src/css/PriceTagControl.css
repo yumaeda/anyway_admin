@@ -1,0 +1,46 @@
+input.vintage-fld
+{
+    width: 60px;
+    margin-right: 5px;
+}
+
+input.region-fld
+{
+    font-size: 10px;
+    width: 72%;
+}
+
+input.cuvee-fld, input.producer-fld
+{
+    width: 90%;
+}
+
+input.name-fld
+{
+    font-size: 20px;
+    width: 90%;
+}
+
+input.producer_jpn-fld, input.name_jpn-fld, input.cepage-fld
+{
+    font-size: 10px;
+    width: 80%;
+}
+
+input.price-fld
+{
+    font-size: 10px;
+    width: 70px;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+td.jpn-label
+{
+    font-size: 10px;
+    white-space: nowrap;
+}
+

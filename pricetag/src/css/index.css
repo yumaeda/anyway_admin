@@ -1,0 +1,49 @@
+aside
+{
+    width: 750px;
+    float: left;
+}
+
+div.loading-pane
+{
+    font-size: 15px;
+    padding 15px;
+}
+
+div.contents-pane
+{
+    float: left;
+    height: 800px;
+
+    border: 1px solid rgb(224, 224, 224);
+    overflow: scroll;
+}
+
+div.landscape-container
+{
+    width: 700px;
+    height: 300px;
+    padding: 10px;
+
+    border: 1px solid rgb(80, 80, 80);
+}
+
+div.portrait-container
+{
+    width: 400px;
+    height: 320px;
+    padding: 10px;
+
+    border: 1px solid rgb(80, 80, 80);
+}
+
+a.adminHomeLnk
+{
+    float: right;
+}
+
+table.candidate-table
+{
+    font-size: 11px;
+}
+

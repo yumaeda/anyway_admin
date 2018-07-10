@@ -1,0 +1,17 @@
+{
+  "name": "pricetag",
+  "version": "1.0.0",
+  "description": "Page for printing out the price tags.",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify ./build/index.js -t babelify --outfile ./target/index.js",
+    "minify": "minify --output ./target/index.min.js ./target/index.js",
+    "css-minify": "minify --output ./target/index.min.css ./build/index.css"
+  },
+  "author": "Yukitaka Maeda",
+  "license": "ISC",
+  "devDependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^14.3.0"
+  }
+}
