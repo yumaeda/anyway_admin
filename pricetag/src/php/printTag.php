@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST")
     exit();
 }
 
-require_once('../../vendor/tcpdf/tcpdf.php');
+require_once('../tcpdf/tcpdf.php');
 
 $orientation = $_POST['orientation'];
 
@@ -56,94 +56,94 @@ function getFlagImgUri($intCountry)
     switch ($intCountry)
     {
     case 1:
-        $imgUri= '../../../images/flags/france.png';
+        $imgUri= '../../images/flags/france.png';
         break;
     case 2:
-        $imgUri= '../../../images/flags/austria.png';
+        $imgUri= '../../images/flags/austria.png';
         break;
     case 3:
-        $imgUri= '../../../images/flags/italy.png';
+        $imgUri= '../../images/flags/italy.png';
         break;
     case 4:
-        $imgUri= '../../../images/flags/germany.png';
+        $imgUri= '../../images/flags/germany.png';
         break;
     case 5:
-        $imgUri= '../../../images/flags/japan.png';
+        $imgUri= '../../images/flags/japan.png';
         break;
     case 6:
-        $imgUri= '../../../images/flags/australia.png';
+        $imgUri= '../../images/flags/australia.png';
         break;
     case 7:
-        $imgUri= '../../../images/flags/portugal.png';
+        $imgUri= '../../images/flags/portugal.png';
         break;
     case 8:
-        $imgUri= '../../../images/flags/america.png';
+        $imgUri= '../../images/flags/america.png';
         break;
     case 9:
-        $imgUri= '../../../images/flags/new_zealand.png';
+        $imgUri= '../../images/flags/new_zealand.png';
         break;
     case 10:
-        $imgUri= '../../../images/flags/south_africa.png';
+        $imgUri= '../../images/flags/south_africa.png';
         break;
     case 11:
-        $imgUri= '../../../images/flags/spain.png';
+        $imgUri= '../../images/flags/spain.png';
         break;
     case 12:
-        $imgUri= '../../../images/flags/croatia.png';
+        $imgUri= '../../images/flags/croatia.png';
         break;
     case 13:
-        $imgUri= '../../../images/flags/argentina.png';
+        $imgUri= '../../images/flags/argentina.png';
         break;
     case 14:
-        $imgUri= '../../../images/flags/hungary.png';
+        $imgUri= '../../images/flags/hungary.png';
         break;
     case 15:
-        $imgUri= '../../../images/flags/united_kingdom.png';
+        $imgUri= '../../images/flags/united_kingdom.png';
         break;
     case 16:
-        $imgUri= '../../../images/flags/rumania.png';
+        $imgUri= '../../images/flags/rumania.png';
         break;
     case 17:
-        $imgUri= '../../../images/flags/costa_rica.png';
+        $imgUri= '../../images/flags/costa_rica.png';
         break;
     case 18:
-        $imgUri= '../../../images/flags/colombia.png';
+        $imgUri= '../../images/flags/colombia.png';
         break;
     case 19:
-        $imgUri= '../../../images/flags/uyghur_turpan.png';
+        $imgUri= '../../images/flags/uyghur_turpan.png';
         break;
     case 20:
-        $imgUri= '../../../images/flags/india.png';
+        $imgUri= '../../images/flags/india.png';
         break;
     case 21:
-        $imgUri= '../../../images/flags/malawi.png';
+        $imgUri= '../../images/flags/malawi.png';
         break;
     case 22:
-        $imgUri= '../../../images/flags/turkey.png';
+        $imgUri= '../../images/flags/turkey.png';
         break;
     case 23:
-        $imgUri= '../../../images/flags/canada.png';
+        $imgUri= '../../images/flags/canada.png';
         break;
     case 24:
-        $imgUri= '../../../images/flags/ukraine.png';
+        $imgUri= '../../images/flags/ukraine.png';
         break;
     case 25:
-        $imgUri= '../../../images/flags/switzerland.png';
+        $imgUri= '../../images/flags/switzerland.png';
         break;
     case 26:
-        $imgUri= '../../../images/flags/bulgaria.png';
+        $imgUri= '../../images/flags/bulgaria.png';
         break;
     case 27:
-        $imgUri= '../../../images/flags/lebanon.png';
+        $imgUri= '../../images/flags/lebanon.png';
         break;
     case 29:
-        $imgUri= '../../../images/flags/chile.png';
+        $imgUri= '../../images/flags/chile.png';
         break;
     case 30:
-        $imgUri= '../../../images/flags/taiwan.png';
+        $imgUri= '../../images/flags/taiwan.png';
         break;
     case 31:
-        $imgUri= '../../../images/flags/moldova.png';
+        $imgUri= '../../images/flags/moldova.png';
         break;
     default:
         break;
@@ -391,3 +391,4 @@ header("Content-Type: application/pdf");
 $pdf->Output(($barcode1 . '_' . $barcode2 . '.pdf'), 'I');
 
 ?>
+
