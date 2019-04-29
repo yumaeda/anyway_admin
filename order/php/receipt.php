@@ -5,6 +5,10 @@ require_once('../defines.php');
 require('../../../includes/config.inc.php');
 require(MYSQL);
 
+// Get tax rate from config file.
+$config = include('../../../config.php');
+$taxRate = $config['tax']['rate']();
+
 function getOrderedDate($orderId)
 {
     $strDate = '';
@@ -47,13 +51,15 @@ function isHappyBox($orderContents)
 
 function renderReceipt($row)
 {
+    global $taxRate;
+
     $orderId        = $row['order_id'];
     $orderDate      = getOrderedDate($orderId);
     $paymentMethod  = 'Credit Card';
     $intShippingFee = getShippingFee($row);
     $intCoolFee     = getCoolFee($row);
     $total          = $row['wine_total'] + $intShippingFee + $intCoolFee;
-    $tax            = floor($total * 0.08);
+    $tax            = floor($total * $taxRate);
     $grandTotal     = number_format($total + $tax);
     $memberDiscount = $row['member_discount'];
 
