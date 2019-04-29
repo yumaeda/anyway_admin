@@ -7,6 +7,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST")
 
 require_once('../tcpdf/tcpdf.php');
 
+// Get tax rate from config file.
+$config = include('../../../config.php');
+$taxRate = $config['tax']['rate']();
+
 $orientation = $_POST['orientation'];
 
 $xMargin = 0;
@@ -155,7 +159,7 @@ function getFlagImgUri($intCountry)
 
 function drawLandscapePriceTag($iPriceTag)
 {
-    global $pageHeight, $pageWidth, $pdf, $ipaexm;
+    global $pageHeight, $pageWidth, $pdf, $ipaexm, $taxRate;
 
     $leftX      = $pageWidth / 8;
     $rightX     = $pageWidth - ($pageWidth / 20);
@@ -237,7 +241,7 @@ function drawLandscapePriceTag($iPriceTag)
     $pdf->Text($jpnValueX, $separatorY + 16, $jpnRegion2);
 
     $strPrice        = number_format($price);
-    $strTaxedPrice   = ' YEN [ tax: ' . number_format($price * 1.08) . ' YEN ] ';
+    $strTaxedPrice   = ' YEN [ tax: ' . number_format($price * (1 + $taxRate)) . ' YEN ] ';
     $priceWidth      = $pdf->GetStringWidth($strPrice, 'helvetica', '', 15);
     $priceHeight     = $pdf->GetStringHeight($strPrice, 'helvetica', '', 15);
     $taxedPriceWidth = $pdf->GetStringWidth($strTaxedPrice, 'helvetica', '', 7);
@@ -252,7 +256,7 @@ function drawLandscapePriceTag($iPriceTag)
 
 function drawPortraitPriceTag($iPriceTag)
 {
-    global $pageHeight, $pageWidth, $pdf, $ipaexm;
+    global $pageHeight, $pageWidth, $pdf, $ipaexm, $taxRate;
 
     $tagHeight      = 65;
     $leftX          = 11;
@@ -325,7 +329,7 @@ function drawPortraitPriceTag($iPriceTag)
     $pdf->Text($jpnValueX, $separatorY + 22, $jpnRegion2);
 
     $strPrice      = number_format($price);
-    $strTaxedPrice = ' YEN [ tax: ' . number_format($price * 1.08) . ' YEN ] ';
+    $strTaxedPrice = ' YEN [ tax: ' . number_format($price * (1 + $taxRate)) . ' YEN ] ';
     $priceWidth    = $pdf->GetStringWidth($strPrice, 'helvetica', '', 15);
     $priceHeight   = $pdf->GetStringHeight($strPrice, 'helvetica', '', 15);
 
