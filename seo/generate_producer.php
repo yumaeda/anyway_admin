@@ -588,6 +588,12 @@ while (isset($_POST["barcode_$i"]) || isset($_POST["wine_detail_$i"]))
         $result = mysqli_query($dbc, "CALL get_wine('$barcode')");
         if ($result !== FALSE)
         {
+            global $curDirPath;
+
+            // Get tax rate from config file.
+            $config = include("$curDirPath/../../../config.php");
+            $taxRate = $config['tax']['rate']();
+
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
             $wineName    = $row['combined_name'];
@@ -596,7 +602,7 @@ while (isset($_POST["barcode_$i"]) || isset($_POST["wine_detail_$i"]))
             $strVintage  = $row['vintage'];
             $strCepage   = $row['cepage'];
             $intStock    = intval($row['stock']);
-            $strPrice    = number_format(floor($row['price'] * 1.08));
+            $strPrice    = number_format(floor($row['price'] * (1 + $taxRate)));
 
             if (!$wineDetail)
             {
