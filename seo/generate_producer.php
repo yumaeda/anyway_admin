@@ -877,6 +877,7 @@ echo generateOptionTag('France',         ($country == 'France'));
 echo generateOptionTag('Italy',          ($country == 'Italy'));
 echo generateOptionTag('Spain',          ($country == 'Spain'));
 echo generateOptionTag('Germany',        ($country == 'Germany'));
+echo generateOptionTag('Georgia',        ($country == 'Georgia'));
 echo generateOptionTag('Austria',        ($country == 'Austria'));
 echo generateOptionTag('Rumania',        ($country == 'Rumania'));
 echo generateOptionTag('Portugal',       ($country == 'Portugal'));
@@ -886,6 +887,7 @@ echo generateOptionTag('Croatia',        ($country == 'Croatia'));
 echo generateOptionTag('United States',  ($country == 'United States'));
 echo generateOptionTag('Australia',      ($country == 'Australia'));
 echo generateOptionTag('New Zealand',    ($country == 'New Zealand'));
+echo generateOptionTag('Chile',          ($country == 'Chile'));
 echo generateOptionTag('Argentina',      ($country == 'Argentina'));
 echo generateOptionTag('Moldova',        ($country == 'Moldova'));
 echo generateOptionTag('Bulgaria',       ($country == 'Bulgaria'));
@@ -913,7 +915,7 @@ echo '
 
 if (!isset($_GET['name']))
 {
-    echo '
+	echo '
                     <td>
                         <select name="eng_district" id="districtSelect">
                             <option value="">(None)</option>
