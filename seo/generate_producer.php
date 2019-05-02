@@ -883,7 +883,9 @@ echo generateOptionTag('Rumania',        ($country == 'Rumania'));
 echo generateOptionTag('Portugal',       ($country == 'Portugal'));
 echo generateOptionTag('United Kingdom', ($country == 'United Kingdom'));
 echo generateOptionTag('Hungary',        ($country == 'Hungary'));
+echo generateOptionTag('Slovenia',       ($country == 'Slovenia'));
 echo generateOptionTag('Croatia',        ($country == 'Croatia'));
+echo generateOptionTag('Canada',         ($country == 'Canada'));
 echo generateOptionTag('United States',  ($country == 'United States'));
 echo generateOptionTag('Australia',      ($country == 'Australia'));
 echo generateOptionTag('New Zealand',    ($country == 'New Zealand'));
@@ -1202,10 +1204,8 @@ $(document).ready(function()
                 var strJpnRegion = $($("select#regionSelect option").get(0)).text();
                 $("form input[name=\"jpn_state\"]").val(strJpnRegion);
 
-                if (strCountry == "France")
-                {
-                    $("select#districtSelect").fadeIn(500);
-                }
+                $("select#regionSelect").trigger("change");
+                $("select#districtSelect").fadeIn(500);
             },
 
             error: function() {}
@@ -1224,7 +1224,8 @@ $(document).ready(function()
         if ((strEngRegion == "Champagne") ||
             (strEngRegion == "Vallée du Rhône") ||
             (strEngRegion == "Bourgogne") ||
-            (strEngRegion == "Vallée de la Loire"))
+            (strEngRegion == "Vallée de la Loire") ||
+            (strEngRegion == "Primorska"))
         {
             $.ajax(
             {
@@ -1273,6 +1274,7 @@ $(document).ready(function()
                 "<option value=\"Côtes de Bordeaux\">コート・ド・ボルドー</option>";
 
             $("select#districtSelect").html(html);
+            $("select#districtSelect").fadeIn(500);
 
             var strJpnDistrict = $($("select#districtSelect option").get(0)).text();
             $("form input[name=\"jpn_district\"]").val(strJpnDistrict);
