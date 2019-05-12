@@ -135,6 +135,15 @@ function generateOptionTag($strCountry, $fSelected)
     return $html;
 }
 
+function generateImageTag($parentDir, $index, $name)
+{
+    $timestamp = date('YmdHis');
+    $imgUri    = "./$parentDir-$index.jpg?t=$timestamp";
+    $alt       = $name . 'の写真' . $index;
+
+    return "<img src=\"$imgUri\" alt=\"$alt\" />";
+}
+
 $disableSession = TRUE;
 require_once('../defines.php');
 require('../../../includes/config.inc.php');
@@ -518,10 +527,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         <div class="contents">
             <h1>' . $engProducerFull . '</h1>
             <h2>' . $jpnProducerFull . '</h2>
-            <div class="imagePane">
-                <img src="./' . $twitterHash . '-1.jpg" alt="' . $jpnProducerFull . 'の写真1" />
-                <img src="./' . $twitterHash . '-2.jpg" alt="' . $jpnProducerFull . 'の写真2" />
-                <img src="./' . $twitterHash . '-3.jpg" alt="' . $jpnProducerFull . 'の写真3" />
+            <div class="imagePane">' .
+                generateImageTag($twitterHash, '1', $jpnProducerFull) .
+                generateImageTag($twitterHash, '2', $jpnProducerFull) .
+                generateImageTag($twitterHash, '3', $jpnProducerFull) . '
             </div>
             <table>
                 <tr>

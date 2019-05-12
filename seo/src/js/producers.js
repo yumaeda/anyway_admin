@@ -17,6 +17,15 @@ function generateEditPageLinkHtml(objProducer)
     return html;
 }
 
+function generateUploadJpegLinkHtml(objProducer)
+{
+    var uploadPageUrl = '../producer_photo_upload/?producer=' + encodeURIComponent(objProducer.name),
+        html          = '<a href="{0}">[Upload Photos]</a>'.format(uploadPageUrl);
+
+    return html;
+}
+
+
 $(document).ready(function()
 {
     $.ajax(
@@ -35,7 +44,10 @@ $(document).ready(function()
             {
                 html += '<div class="row" style="padding:10px;border:solid 1px rgb(222,222,222);">';
                 html +=     '<div class="col-sm-10">' + generateDisplayPageLinkHtml(rgobjProducer[i], i + 1) + '</div>';
-                html +=     '<div class="col-sm-2">' + generateEditPageLinkHtml(rgobjProducer[i]) + '&nbsp;&nbsp;<a href="#" class="delete-link">[Delete]</a></div>';
+                html +=     '<div class="col-sm-2">';
+                html +=     generateEditPageLinkHtml(rgobjProducer[i]) + '&nbsp;&nbsp;';
+                html +=     generateUploadJpegLinkHtml(rgobjProducer[i]) + '&nbsp;&nbsp;';
+                html +=     '<a href="#" class="delete-link">[Delete]</a></div>';
                 html += '</div>';
             }
 
