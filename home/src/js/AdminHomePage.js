@@ -110,7 +110,7 @@ class AdminHomePage
         anchorTag.addClass('adminLink');
         html += '<div class="adminBtn"><div>{0}</div></div>'.format(anchorTag.toHtml());
 
-        anchorTag = new AnchorTag('//anyway-grapes.jp/wines/admin/order/index.php', '注文の管理');
+        anchorTag = new AnchorTag('//anyway-grapes.jp/wines/admin/order2', '注文の管理');
         anchorTag.addClass('adminLink');
         html += '<div class="adminBtn"><div>{0}</div></div>'.format(anchorTag.toHtml());
 
