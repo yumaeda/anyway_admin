@@ -7,10 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST")
 
 require_once('../tcpdf/tcpdf.php');
 
-// Get tax rate from config file.
-$config = include('../../../config.php');
-$taxRate = $config['tax']['rate']();
-
+$TAX_RATE = 0.1;
 $orientation = $_POST['orientation'];
 
 $xMargin = 0;
@@ -144,10 +141,10 @@ function getFlagImgUri($intCountry)
         $imgUri= '../../images/flags/chile.png';
         break;
     case 30:
-        $imgUri= '../../images/flags/taiwan.png';
+        $imgUri= '../../images/flags/moldova.png';
         break;
     case 31:
-        $imgUri= '../../images/flags/moldova.png';
+        $imgUri= '../../images/flags/greece.png';
         break;
     default:
         break;
@@ -156,10 +153,9 @@ function getFlagImgUri($intCountry)
     return $imgUri;
 }
 
-
 function drawLandscapePriceTag($iPriceTag)
 {
-    global $pageHeight, $pageWidth, $pdf, $ipaexm, $taxRate;
+    global $pageHeight, $pageWidth, $pdf, $ipaexm, $TAX_RATE;
 
     $leftX      = $pageWidth / 8;
     $rightX     = $pageWidth - ($pageWidth / 20);
@@ -177,7 +173,7 @@ function drawLandscapePriceTag($iPriceTag)
     $vintage = $_POST["vintage_$iPriceTag"];
     if (!$vintage || empty($vintage))
     {
-        if ($_POST["type_$iPriceTag"] != 'goods')
+        if ($_POST["type_$iPriceTag"] != 11)
         {
             $vintage = 'S.A.';
         }
@@ -241,7 +237,7 @@ function drawLandscapePriceTag($iPriceTag)
     $pdf->Text($jpnValueX, $separatorY + 16, $jpnRegion2);
 
     $strPrice        = number_format($price);
-    $strTaxedPrice   = ' YEN [ tax: ' . number_format($price * (1 + $taxRate)) . ' YEN ] ';
+    $strTaxedPrice   = ' YEN [ tax: ' . number_format($price * (1 + $TAX_RATE)) . ' YEN ] ';
     $priceWidth      = $pdf->GetStringWidth($strPrice, 'helvetica', '', 15);
     $priceHeight     = $pdf->GetStringHeight($strPrice, 'helvetica', '', 15);
     $taxedPriceWidth = $pdf->GetStringWidth($strTaxedPrice, 'helvetica', '', 7);
@@ -253,10 +249,9 @@ function drawLandscapePriceTag($iPriceTag)
     $pdf->Text($rightX - $taxedPriceWidth - $priceWidth, $separatorY + 16, $strPrice);
 }
 
-
 function drawPortraitPriceTag($iPriceTag)
 {
-    global $pageHeight, $pageWidth, $pdf, $ipaexm, $taxRate;
+    global $pageHeight, $pageWidth, $pdf, $ipaexm, $TAX_RATE;
 
     $tagHeight      = 65;
     $leftX          = 11;
@@ -274,7 +269,7 @@ function drawPortraitPriceTag($iPriceTag)
     $vintage = $_POST["vintage_$iPriceTag"];
     if (!$vintage || empty($vintage))
     {
-        if ($_POST["type_$iPriceTag"] != 'goods')
+        if ($_POST["type_$iPriceTag"] != 11)
         {
             $vintage = 'S.A.';
         }
@@ -329,7 +324,7 @@ function drawPortraitPriceTag($iPriceTag)
     $pdf->Text($jpnValueX, $separatorY + 22, $jpnRegion2);
 
     $strPrice      = number_format($price);
-    $strTaxedPrice = ' YEN [ tax: ' . number_format($price * (1 + $taxRate)) . ' YEN ] ';
+    $strTaxedPrice = ' YEN [ tax: ' . number_format($price * (1 + $TAX_RATE)) . ' YEN ] ';
     $priceWidth    = $pdf->GetStringWidth($strPrice, 'helvetica', '', 15);
     $priceHeight   = $pdf->GetStringHeight($strPrice, 'helvetica', '', 15);
 
@@ -395,4 +390,3 @@ header("Content-Type: application/pdf");
 $pdf->Output(($barcode1 . '_' . $barcode2 . '.pdf'), 'I');
 
 ?>
-
