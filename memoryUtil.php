@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * This function is copied from the below URL.
+ * https://stackoverflow.com/questions/2510434/format-bytes-to-kilobytes-megabytes-gigabytes
+ */
 function formatBytes($bytes, $precision = 2) { 
     $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
 
