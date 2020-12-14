@@ -1080,7 +1080,7 @@ echo '
                         畑の総面積
                     </td>
                     <td class="inputCol">
-                        <input type="number" name="total_ha" value="' . $totalHa . '" />ha
+                        <input type="number" step=".01" name="total_ha" value="' . $totalHa . '" />ha
                     </td>
                 </tr>
                 <tr>
