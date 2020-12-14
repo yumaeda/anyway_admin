@@ -1153,8 +1153,8 @@ else
         $cRow = mysqli_num_rows($result);
         while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) || ($i <= ($cRow + 15)))
         {
-            $barcode    = $row['barcode_number'];
-            $wineDetail = $row['detail'];
+            $barcode = isset($row['barcode_number']) ? $row['barcode_number'] : '';
+            $wineDetail = isset($row['detail']) ? $row['detail'] : '';
 
             $inputListHtml .= "
                 【<input type=\"text\" name=\"barcode_$i\" placeholder=\"コード\" class=\"barcodeFld\" value=\"$barcode\"/>】<br />
