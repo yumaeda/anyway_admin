@@ -34,20 +34,20 @@ $pdf->SetAutoPageBreak(false, 0);
 
 // Japanese fonts.
 ini_set("memory_limit", "-1");
-$ipaexm = $pdf->AddTTFfont("../font/ipaexm.ttf");
+$ipaexm = TCPDF_FONTS::addTTFfont('../font/ipaexm.ttf', 'TrueTypeUnicode', '', 32);
 
 $pdf->SetFont('helvetica', '', 9);
 if ($orientation == 1)
 {
-    $pdf->Line(0, $pageHeight / 2, $pageWidth, $pageHeight / 2, array(width=>0.01));
+    $pdf->Line(0, $pageHeight / 2, $pageWidth, $pageHeight / 2, array("width"=>0.01));
 }
 else if ($orientation == 2)
 {
     $upperLineY = ($pageHeight / 2 ) - 7.5;
     $lowerLineY = ($pageHeight / 2 ) + 8;
-    $pdf->Line(0, $upperLineY, $pageWidth, $upperLineY, array(width=>0.01));
-    $pdf->Line(0, $lowerLineY, $pageWidth, $lowerLineY, array(width=>0.01));
-    $pdf->Line(8, 0, 8, 148, array(width=>0.01));
+    $pdf->Line(0, $upperLineY, $pageWidth, $upperLineY, array("width"=>0.01));
+    $pdf->Line(0, $lowerLineY, $pageWidth, $lowerLineY, array("width"=>0.01));
+    $pdf->Line(8, 0, 8, 148, array("width"=>0.01));
 }
 
 function getFlagImgUri($intCountry)
@@ -148,6 +148,9 @@ function getFlagImgUri($intCountry)
         break;
     case 32:
         $imgUri= '../../images/flags/georgia.png';
+        break;
+    case 33:
+        $imgUri= '../../images/flags/czech.png';
         break;
     default:
         break;
