@@ -13,11 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $action  = mysqli_real_escape_string($dbc, $_POST['action']);
         if ($action == 'set')
         {
-            mysqli_query($dbc, "CALL seiya_anyway.set_printed_flag('$barcode')");
+            mysqli_query($dbc, "CALL shop.set_printed_flag('$barcode')");
         }
         else
         {
-            mysqli_query($dbc, "CALL seiya_anyway.init_printed_flag('$barcode')");
+            mysqli_query($dbc, "CALL shop.init_printed_flag('$barcode')");
         }
     }
 }

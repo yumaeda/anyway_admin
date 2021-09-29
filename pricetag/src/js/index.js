@@ -13,8 +13,7 @@ var loadNewCandidateWines = function(intCode)
                 orderBy: 'barcode_number DESC LIMIT 1'
             },
 
-            dataType: 'jsonp',
-            jsonp:    'xDomainCallback',
+            dataType: 'json',
             success: function(rgobjWine)
             {
                 if (rgobjWine.length == 1)
@@ -82,8 +81,7 @@ var loadNewCandidateWines = function(intCode)
                             condition: 'barcode_number=' + strCode 
                         },
 
-                        dataType: 'jsonp',
-                        jsonp:    'xDomainCallback',
+                        dataType: 'json',
                         success: function(rgobjWine)
                         {
                             if (rgobjWine.length == 1)

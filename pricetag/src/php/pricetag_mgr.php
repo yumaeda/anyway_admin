@@ -6,7 +6,7 @@ include_once("$curDirPath/common.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET')
 {
-    $result = mysqli_query($dbc, "CALL seiya_anyway.get_untagged_wine_codes()");
+    $result = mysqli_query($dbc, "CALL shop.get_untagged_wine_codes()");
 
     if ($result !== FALSE)
     {
