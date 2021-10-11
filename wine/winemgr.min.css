@@ -1,0 +1,493 @@
+/* Font */
+
+.jpnFont
+{
+    font-family: "KozGoPro-Light", "小塚ゴシック Pro L", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, "メイリオ", Meiryo, sans-serif;
+}
+
+.engFont
+{
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+
+/* Color */
+
+.colorCadetBlue
+{
+    color: cadetblue;
+}
+
+.colorGoldenRod
+{
+    color: goldenrod;
+}
+
+.colorGreen
+{
+    color: green;
+}
+
+.colorOrange
+{
+    color: orange;
+}
+
+.colorPink
+{
+    color: pink;
+}
+
+.colorRed
+{
+    color: red;
+}
+
+.colorDarkRed
+{
+    color: darkred;
+}
+
+.colorYellow
+{
+    color: yellow;
+}
+
+.colorWhite
+{
+    color: white;
+}
+
+.colorSaturday
+{
+    color: rgb(130, 130, 255);
+}
+
+.colorSunday
+{
+    color: rgb(228, 156, 174);
+}
+
+
+/* Background Color */
+
+.bgBlack
+{
+    background-color: black;
+}
+
+
+/* Line */
+
+.lineThin
+{
+    border: none;
+    height: 1px;
+    background-color: rgb(224, 224, 224);
+    color: rgb(224, 224, 224);
+}
+
+
+/* Width */
+
+.widthHalf
+{
+    width: 50%;
+}
+
+.widthSemiFull
+{
+    width: 80%;
+}
+
+.widthFull
+{
+    width: 100%;
+}
+
+.contentsWidth
+{
+    width: 750px;
+}
+
+/* Margin */
+
+.hMarginAuto
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lMarginZero
+{
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.rMarginZero
+{
+    margin-right: 0;
+    margin-left: auto;
+}
+
+tr.marginTopLarge > td
+{
+    margin-top: 40px;
+}
+
+
+/* Text */
+
+.textXXSmall
+{
+    font-size: 8px;
+}
+
+.textXSmall
+{
+    font-size: 10px;
+}
+
+.textSmall
+{
+    font-size: 12px;
+}
+
+.textSmallMedium
+{
+    font-size: 16px;
+}
+
+.textMedium
+{
+    font-size: 20px;
+}
+
+.textMediumLarge
+{
+    font-size: 25px;
+}
+
+.textLarge
+{
+    font-size: 30px;
+}
+
+.textXLarge
+{
+    font-size: 60px;
+}
+
+.textCenter
+{
+    text-align: center;
+}
+
+.textLeft
+{
+    text-align: left;
+}
+
+.textRight
+{
+    text-align: right;
+}
+
+.textTop
+{
+    vertical-align: top;
+}
+
+.textMiddle
+{
+    vertical-align: middle;
+}
+
+.textNoWrap
+{
+    white-space: nowrap;
+}
+
+.textShadow
+{
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.textItalic
+{
+    font-style: italic;
+}
+
+.textDeleted
+{
+    text-decoration: line-through;
+}
+
+.textUnderline
+{
+    text-decoration: underline;
+}
+
+.textSpacedSmall
+{
+    letter-spacing: 3px;
+}
+
+
+/* Paragraph */
+
+.lineHeightSmall
+{
+    line-height: 14px;
+}
+
+.lineHeightSmallMedium
+{
+    line-height: 16px;
+}
+
+
+/* Grayscale Image */
+
+.desaturate
+{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+    filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale");
+}
+
+.desaturate:hover
+{
+    filter: none;
+    -webkit-filter: grayscale(0%);
+}
+
+
+/* Table Padding */
+
+tr.paddingTopSmall > td
+{
+    padding-top: 10px;
+}
+
+tr.paddingTopSmallMedium > td
+{
+    padding-top: 13px;
+}
+
+tr.paddingTopMedium > td
+{
+    padding-top: 20px;
+}
+
+tr.paddingTopLarge > td
+{
+    padding-top: 40px;
+}
+
+tr.paddingTopXLarge > td
+{
+    padding-top: 60px;
+}
+
+tr.paddingLeftXSmall > td
+{
+    padding-left: 5px;
+}
+
+tr.paddingLeftSmall > td
+{
+    padding-left: 10px;
+}
+
+tr.paddingRightXSmall > td
+{
+    padding-right: 5px;
+}
+
+tr.paddingRightSmall > td
+{
+    padding-right: 10px;
+}
+
+tr.paddingRightMedium > td
+{
+    padding-right: 15px;
+}
+
+tr.paddingBottom > td
+{
+    padding-bottom: 10px;
+}
+
+tr.paddingBottomSmall > td
+{
+    padding-bottom: 6px;
+}
+
+tr.paddingBottomMedium > td
+{
+    padding-bottom: 15px;
+}
+
+tr.paddingBottomMediumLarge > td
+{
+    padding-bottom: 25px;
+}
+
+tr.paddingColBottomLarge > td
+{
+    padding-bottom: 40px;
+}
+
+
+/* Margin */
+
+.marginBottomSmall
+{
+    margin-bottom: 10px;
+}
+
+﻿body
+{
+    font-family: "Kozuka Gothic Pro EL", "Kozuka Gothic Pro L", "Meiryo UI", sans-serif;
+}
+
+input
+{
+    padding: 0;
+    border: 0;
+    width: 40px;
+    height: 18px;
+}
+
+img
+{
+    width: 45px;
+    padding-top: 10px;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+td
+{
+    height: 80px;
+    border: 2px solid rgb(224, 224, 224);
+    vertical-align: top;
+}
+
+td.firstCol
+{
+    text-align: center;
+}
+
+td.firstCol > input
+{
+    border: 1px solid;
+}
+
+td.secondCol
+{
+    width: 550px;
+    padding: 0;
+}
+
+td.thirdCol
+{
+    vertical-align: middle;
+    text-align: center;
+}
+
+input.vintageFld
+{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    width: 40px;
+}
+
+input.nameFld
+{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    width: 200px;
+}
+
+input.producerFld
+{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    width: 150px;
+}
+
+input.jpnNameFld
+{
+    font-size: 9px;
+    width: 175px;
+}
+
+input.jpnProducerFld
+{
+    font-size: 9px;
+    width: 175px;
+}
+
+span#itemNumber
+{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
+span.regionLabel
+{
+    font-size: 12px;
+}
+
+input.jpnRegionFld
+{
+    font-size: 9px;
+    width: 90px; 
+}
+
+input.cepageFld
+{
+    font-size: 9px;
+    width: 250px; 
+}
+
+input.commentFld
+{
+    font-size: 8px;
+    width: 450px;
+}
+
+input.priceFld
+{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    width: 50px;
+}
+
+input.quantityFld
+{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    width: 40px;
+}
+
+input.subtitleFld
+{
+    width: 200px;
+}
+
+img.buttonImage
+{
+    cursor: pointer;
+
+    margin: 5px;
+    width: 20px;
+}
+
