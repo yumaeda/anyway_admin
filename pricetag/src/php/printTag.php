@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 if ($_SERVER["REQUEST_METHOD"] != "POST")
 {
     exit();
@@ -137,7 +139,7 @@ function getFlagImgUri($intCountry)
     case 27:
         $imgUri= '../../images/flags/lebanon.png';
         break;
-    case 29:
+    case 28:
         $imgUri= '../../images/flags/chile.png';
         break;
     case 30:
