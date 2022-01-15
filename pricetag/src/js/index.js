@@ -1,7 +1,7 @@
 var cCandidateWine = 0,
     cRetrievedWine = 0;
 
-var loadNewCandidateWines = function(intCode)
+var loadNewCandidateWines = function()
     {
         $.ajax(
         {
@@ -18,14 +18,30 @@ var loadNewCandidateWines = function(intCode)
             {
                 if (rgobjWine.length == 1)
                 {
-                    var intFirstCode = intCode + 1,
-                        intLastCode  = parseInt(rgobjWine[0].barcode_number, 10);
-
-                    while (intFirstCode <= intLastCode)
+                    $.ajax(
                     {
-                        $.post('./pricetag_flag_mgr.php', { barcode_number: intFirstCode, action: 'init' });
-                        ++intFirstCode;
-                    }
+                        url : '//anyway-grapes.jp/wines/admin/get_admin_items.php',
+                        data:
+                        {
+                            dbTable: 'price_tags',
+                            condition: 'barcode_number > 1000',
+                            orderBy: 'barcode_number DESC LIMIT 1'
+                        },
+
+                        dataType: 'json',
+                        success: function(rgobjTag)
+                        {
+                            var intFirstCode = parseInt(rgobjTag[0].barcode_number, 10) + 1,
+                                intLastCode  = parseInt(rgobjWine[0].barcode_number, 10);
+
+                            while (intFirstCode <= intLastCode)
+                            {
+                                $.post('./pricetag_flag_mgr.php', { barcode_number: intFirstCode, action: 'init' });
+                                ++intFirstCode;
+                            }
+                        },
+                        error: function() {}
+                    });
                 }
             },
 
@@ -148,7 +164,7 @@ var loadNewCandidateWines = function(intCode)
                     });
                 }
 
-                loadNewCandidateWines(parseInt(strCode, 10));
+                loadNewCandidateWines();
             },
 
             error: function() {}
