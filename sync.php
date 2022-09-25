@@ -7,7 +7,6 @@ if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off')
 }
 
 $curDirPath = dirname(__FILE__);
-require_once("$curDirPath/../../memoryUtil.php");
 
 // If DB sync is already running, terminate the script.
 $dbSyncStatusFilePath = "$curDirPath/../../syncStatus.txt";
@@ -43,6 +42,7 @@ require_once("$curDirPath/dbutils.php");
 require_once("$curDirPath/../../includes/config.inc.php");
 require_once(MYSQL);
 
+
 function formatCsv($filePath)
 {
     $csvData =
@@ -51,8 +51,7 @@ function formatCsv($filePath)
         '"","101","500","500","500","","500","","","","1000","","","","","","","","","","","","","S","Online","","","Gift Box (2 Bottles)","ギフト・ボックス（2本用）","","","","","","",""' . "\n";
 
     $csvData .= file_get_contents($filePath);
-    $csvData  = preg_replace('/
-/', "\n", $csvData);
+    $csvData  = preg_replace('//', "\n", $csvData);
     $csvData  = preg_replace('//', "", $csvData);
 
     file_put_contents($filePath, $csvData);
@@ -224,15 +223,11 @@ function generateJpnWineName($strType, $strCountry, $strRegion, $strVillage, $st
 
 function importWineCsv($filePath)
 {
-    printAvailableMemory('importWineCsv::Before fopen()');
     $file = fopen("$filePath", 'r');
-    printAvailableMemory('importWineCsv::After fopen()');
     if ($file)
     { 
         $newline  = getLineBreakString();
-        printAvailableMemory('importWineCsv::Before fread()');
         $rgstrRow = explode($newline, fread($file, filesize($filePath)));
-        printAvailableMemory('importWineCsv::After fread()');
 
         fclose($file);
     }
@@ -341,16 +336,18 @@ function importWineCsv($filePath)
     echo "Finished reading data from the CSV file.";
 
     $fFailed = FALSE;
+    $mysqli->autocommit(FALSE);
     foreach ($rgstrQuery as $strQuery)
     {
         if ($strQuery)
         {
-            if ($mysqli->query($strQuery) === FALSE)
-            {
-                $fFailed = TRUE;
-                echo("Failed Query: $strQuery");
-            }
+            $mysqli->query($strQuery);
         }
+    }
+
+    if (!$mysqli->commit()) {
+        print("Transaction commit failed\n");
+        exit();
     }
 
     $mysqli->close();
@@ -404,9 +401,7 @@ function getDeliveredWines($dbc)
     return mysqli_query($dbc, "CALL get_delivered_wines('$year', '$month', '$date')");
 }
 
-printMemoryUsage('Before formatCsv()');
 formatCsv($csvFilePath);
-printMemoryUsage('After formatCsv()');
 
 if (importWineCsv($csvFilePath))
 {
