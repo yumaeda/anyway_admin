@@ -160,6 +160,12 @@ function getFlagImgUri($intCountry)
     case 35:
         $imgUri= '../../images/flags/slovenia.png';
         break;
+    case 36:
+        $imgUri= '../../images/flags/china.png';
+        break;
+    case 37:
+        $imgUri= '../../images/flags/armenia.png';
+        break;
     default:
         break;
     }
