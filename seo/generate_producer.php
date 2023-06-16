@@ -889,6 +889,7 @@ echo generateOptionTag('Germany',        ($country == 'Germany'));
 echo generateOptionTag('Poland',         ($country == 'Poland'));
 echo generateOptionTag('Georgia',        ($country == 'Georgia'));
 echo generateOptionTag('Austria',        ($country == 'Austria'));
+echo generateOptionTag('Switzerland',    ($country == 'Switzerland'));
 echo generateOptionTag('Rumania',        ($country == 'Rumania'));
 echo generateOptionTag('Portugal',       ($country == 'Portugal'));
 echo generateOptionTag('United Kingdom', ($country == 'United Kingdom'));
