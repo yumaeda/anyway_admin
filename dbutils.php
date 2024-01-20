@@ -165,6 +165,11 @@ function dropTable($tableName)
     $mysqli->close();
 }
 
+function dropTableForCurrentDB($mysqli, $tableName)
+{
+    return $mysqli->query("DROP TABLE IF EXISTS $tableName;");
+}
+
 
 function getLineBreakString()
 {
