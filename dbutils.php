@@ -148,6 +148,24 @@ function createTable($strTable, $rgstrColumn, $keyColName)
     }
 }
 
+function createTableForCurrentDB($mysqli, $strTable, $rgstrColumn, $keyColName)
+{
+    global $dbCols;
+
+    $query = "CREATE TABLE $strTable (";
+    if ($keyColName == "id")
+    {
+        $query .= "id INTEGER AUTO_INCREMENT NOT NULL,";
+    }
+
+    foreach ($rgstrColumn as $strColumn)
+    {
+        $query .= $strColumn . " " . $GLOBALS["dbCols"][$strColumn] . ", ";
+    }
+    $query .= "PRIMARY KEY($keyColName)) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
+    return $mysqli->query($query);
+}
 
 function dropTable($tableName)
 {
