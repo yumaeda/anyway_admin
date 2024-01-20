@@ -43,18 +43,18 @@ require_once("$curDirPath/../../includes/config.inc.php");
 require_once(MYSQL);
 
 
-function formatCsv($filePath)
+function formatCsv($srcFilePath, $targetFilePath)
 {
     $csvData =
         '"glass_price","barcode_number","price","member_price","cepage","store_price","rating","rating_jpn","cultivation_method","stock","importer","type","country","producer","producer_jpn","vintage","village","village_jpn","district","district_jpn","region","region_jpn","apply","availability","etc","comment","name","name_jpn","point","catch_copy","capacity1","capacity2","capacity3","capacity4","wholesale_price"' . "\n" .
         '"","100","300","300","300","","300","","","","1000","","","","","","","","","","","","","S","Online","","","Gift Box (1 Bottle)","ギフト・ボックス（1本用）","","","","","","",""' . "\n" .
         '"","101","500","500","500","","500","","","","1000","","","","","","","","","","","","","S","Online","","","Gift Box (2 Bottles)","ギフト・ボックス（2本用）","","","","","","",""' . "\n";
 
-    $csvData .= file_get_contents($filePath);
+    $csvData .= file_get_contents($srcFilePath);
     $csvData  = preg_replace('//', "\n", $csvData);
     $csvData  = preg_replace('//', "", $csvData);
 
-    file_put_contents($filePath, $csvData);
+    file_put_contents($targetFilePath, $csvData);
 }
 
 function appendToken($strSrc, $strToken, $strDelimiter)
@@ -243,16 +243,44 @@ function importWineCsv($filePath)
     $rgstrColName[0] = ltrim($rgstrColName[0], "\"");
     $rgstrColName[count($rgstrColName) - 1] = rtrim($rgstrColName[count($rgstrColName) - 1], "\"");
 
+    // Create column names array for creating wines table.
+    $rgstrWineColName = explode($separator, $rgstrRow[0]);
+    $rgstrWineColName[0] = ltrim($rgstrWineColName[0], "\"");
+    $rgstrWineColName[count($rgstrWineColName) - 1] = rtrim($rgstrWineColName[count($rgstrWineColName) - 1], "\"");
+    // Pops 'wholesale_price' column.
+    array_pop($rgstrWineColName);
+    // Pops 'capacity1', 'capacity2', 'capacity3', 'capacity4' columns.
+    array_pop($rgstrWineColName);
+    array_pop($rgstrWineColName);
+    array_pop($rgstrWineColName);
+    array_pop($rgstrWineColName);
+    // Add a combined column, which contains the wine name.
+    array_push($rgstrWineColName, 'combined_name', 'combined_name_jpn', 'capacity');
+
     // Generate DB table name from the CSV file name.
     $iLastSlash = strrpos($filePath, "/");
     $fileName = substr($filePath, $iLastSlash + 1);
-    $tableName = str_replace(".csv", "", $fileName);
+    $tableName = "wines";
 
     $rgstrQuery = array();
 
-    dropTable($tableName);
+    $mysqli = connectToMySql();
+    if (dropTableForCurrentDB($mysqli, $tableName) !== FALSE) {
+        echo("Finished dropping '$tableName' table.<br>");
+    }
+    else
+    {
+        exit("Failed to drop $tableName.");
+    }
 
-    $mysqli  = connectToMySql();
+    if (createTableForCurrentDB($mysqli, $tableName, $rgstrWineColName, 'id') !== FALSE) {
+        echo("Finished creating '$tableName' table.<br>");
+    }
+    else
+    {
+        exit("Failed to create $tableName.");
+    }
+    $mysqli->autocommit(FALSE);
 
     for ($i = 1; $i < $cLine; ++$i)
     {
@@ -316,41 +344,31 @@ function importWineCsv($filePath)
         unset($rgobjCol['capacity3']);
         unset($rgobjCol['capacity4']);
 
-        $rgstrQuery[] = generateSecureUpdateTableQuery($mysqli, $tableName, $rgobjCol, 0);
-    }
-
-    // Pops 'wholesale_price' column.
-    array_pop($rgstrColName);
-
-    // Pops 'capacity1', 'capacity2', 'capacity3', 'capacity4' columns.
-    array_pop($rgstrColName);
-    array_pop($rgstrColName);
-    array_pop($rgstrColName);
-    array_pop($rgstrColName);
-
-    // Add a combined column, which contains the wine name.
-    array_push($rgstrColName, 'combined_name', 'combined_name_jpn', 'capacity');
-
-    createTable($tableName, $rgstrColName, 'id');
-
-    echo "Finished reading data from the CSV file.";
-
-    $fFailed = FALSE;
-    $mysqli->autocommit(FALSE);
-    foreach ($rgstrQuery as $strQuery)
-    {
-        if ($strQuery)
+        //$rgstrQuery[] = generateSecureUpdateTableQuery($mysqli, $tableName, $rgobjCol, 0);
+        $strQuery = generateSecureUpdateTableQuery($mysqli, $tableName, $rgobjCol, 0);
+        if ($i % 2000 == 0) {
+            echo("$i/$cLine のデータを作成しました。<br>");
+        }
+        if ($mysqli->query($strQuery) === FALSE)
         {
-            $mysqli->query($strQuery);
+            echo("Below query failed:<br>$strQuery<br>");
         }
     }
 
-    if (!$mysqli->commit()) {
-        print("Transaction commit failed\n");
-        exit();
-    }
+    $fFailed = FALSE;
 
+    echo("Commit all the changes to $tableName...");
+    if ($mysqli->commit())
+    {
+        echo(" [DONE]<br>");
+    }
+    else
+    {
+        echo("<br>Transaction commit failed<br>");
+        $fFailed = TRUE;
+    }
     $mysqli->close();
+
     return (!$fFailed);
 }
 
@@ -401,9 +419,11 @@ function getDeliveredWines($dbc)
     return mysqli_query($dbc, "CALL get_delivered_wines('$year', '$month', '$date')");
 }
 
-formatCsv($csvFilePath);
+$wineCsvPath = "$curDirPath/../../formmated_wines.csv";
+echo "Generate $wineCsvPath for import.<br>";
+formatCsv($csvFilePath, $wineCsvPath);
 
-if (importWineCsv($csvFilePath))
+if (importWineCsv($wineCsvPath))
 {
     echo('<br /><br />Synced :)');
 
