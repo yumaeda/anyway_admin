@@ -903,6 +903,7 @@ echo generateOptionTag('Australia',      ($country == 'Australia'));
 echo generateOptionTag('New Zealand',    ($country == 'New Zealand'));
 echo generateOptionTag('Chile',          ($country == 'Chile'));
 echo generateOptionTag('Argentina',      ($country == 'Argentina'));
+echo generateOptionTag('Uruguay',        ($country == 'Uruguay'));
 echo generateOptionTag('Moldova',        ($country == 'Moldova'));
 echo generateOptionTag('Bulgaria',       ($country == 'Bulgaria'));
 echo generateOptionTag('Greece',         ($country == 'Greece'));
