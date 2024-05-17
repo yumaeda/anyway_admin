@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     else
     {
         echo "Possible file upload attack!\n";
+        print_r($_FILES);
     }
 
     // Script for generating alternative images for the wines w/o image.
